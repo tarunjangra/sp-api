@@ -15,11 +15,12 @@ class Entity extends Migration
     {
       Schema::create('entities', function (Blueprint $table) {
         $table->increments('guid');
-        $table->string('subtype');
-        $table->string('username')->unique();
-        $table->boolean('status')->default(true);
+        $table->string('subtype')->nullable('false');
+        $table->string('slug')->unique()->nullable(false);
+        $table->integer('owner_id')->nullable(false);
+        $table->boolean('status')->default(true)->nullable(false);
         // 0 represent public permission
-        $table->enum('permissoin',[0,1,2,3])->default(0);
+        $table->enum('permissoin',[0,1,2,3])->default(0)->nullable(false);
         $table->timestamps();
       });
     }

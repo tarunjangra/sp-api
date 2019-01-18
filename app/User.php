@@ -27,9 +27,4 @@ class User extends Authenticatable
   protected $hidden = [
     'password', 'remember_token',
   ];
-
-  public function entity()
-  {
-    return $this->belongsTo('App\Entity', 'guid', 'guid');
-  }
 }
